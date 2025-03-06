@@ -58,9 +58,10 @@
         },
         "default": {
             "animation": "gradient_up_down"
-            "hue": 180,
-            "sat": 210,
+            "hue": 170,
+            "sat": 220,
             "val": 128
+            "speed": 135
         },
         "max_brightness": 150,
         "split_count": [27, 27],

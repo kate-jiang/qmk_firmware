@@ -22,24 +22,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_CTRL] = LAYOUT_split_3x6_3(
-    KC_BRID,      KC_BRIU, KC_VOLD, KC_MUTE, KC_VOLU, SGUI(KC_S),    MS_DOWN, MS_RGHT, KC_DOWN, KC_RGHT, LGUI(KC_MINS),  LGUI(KC_EQL),
+    KC_BRID,      KC_BRIU, KC_VOLD, KC_MUTE, KC_VOLU, SGUI(KC_S),    MS_DOWN, MS_RGHT, KC_DOWN, KC_RGHT, _______,        _______,
     CW_TOGG,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,           LCTL(KC_B),
     MO(_CONFIG),  MS_BTN2, KC_MRWD, KC_MPLY, KC_MFFD, MS_BTN1,       MS_UP,   MS_LEFT, KC_UP,   KC_LEFT, LGUI(KC_LEFT),  LGUI(KC_RGHT),
-                                    KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS
+                                    _______, _______, _______,       _______, _______, _______
   ),
 
   [_SYM] = LAYOUT_split_3x6_3(
-    KC_TRNS, KC_GRV,  KC_TILD,    KC_DQUO,   KC_QUOT, KC_PERC,    KC_CIRC,  KC_LPRN, KC_RPRN, KC_DLR,  KC_PIPE, KC_TRNS,
-    KC_TRNS, KC_MINS, KC_UNDS,    KC_PLUS,   KC_EXLM, KC_EQL,     KC_TRNS, KC_LCBR, KC_RCBR, KC_ASTR, KC_SCLN, KC_COLN,
-    KC_TRNS, KC_HASH, S(KC_COMM), S(KC_DOT), KC_QUES, KC_AMPR,    KC_AT,    KC_LBRC, KC_RBRC, KC_BSLS, KC_SLSH, KC_TRNS,
-                                    KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS
+    _______, _______, _______,    KC_DQUO,   KC_QUOT, KC_PERC,    KC_CIRC, KC_LPRN, KC_RPRN, KC_DLR,  KC_PIPE, _______,
+    _______, KC_MINS, KC_UNDS,    KC_PLUS,   KC_EXLM, KC_EQL,     KC_GRV,  KC_LCBR, KC_RCBR, KC_ASTR, KC_SCLN, KC_COLN,
+    _______, KC_HASH, S(KC_COMM), S(KC_DOT), KC_QUES, KC_AMPR,    KC_AT,   KC_LBRC, KC_RBRC, KC_BSLS, KC_SLSH, KC_TILD,
+                                    _______, _______, _______,    _______,  _______, _______
   ),
 
   [_CONFIG] = LAYOUT_split_3x6_3(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    RM_NEXT, RM_HUEU, RM_SATU, RM_VALU, RM_SPDU,  QK_BOOT,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  GC_SONG,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    RM_PREV, RM_HUED, RM_SATD, RM_VALD, RM_SPDD,  QK_CLEAR_EEPROM,
-                               KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS
+    _______, _______, _______, _______, _______, _______,    RM_NEXT, RM_HUEU, RM_SATU, RM_VALU, RM_SPDU,  QK_BOOT,
+    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______,  GC_SONG,
+    _______, _______, _______, _______, _______, _______,    RM_PREV, RM_HUED, RM_SATD, RM_VALD, RM_SPDD,  QK_CLEAR_EEPROM,
+                               _______, _______, _______,    _______, _______, _______
   )
 };
 
@@ -57,12 +57,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch(get_highest_layer(layer_state)) {
         case 2:
-            rgb_matrix_set_color_all(60, 20, 20);
+            rgb_matrix_set_color_all(20, 60, 20);
             break;
         case 1:
-            rgb_matrix_set_color_all(15, 35, 60);
+            rgb_matrix_set_color_all(50, 35, 5);
             break;
         default:
+            rgb_matrix_set_color_all(60, 20, 20);
             break;
     }
     return false;
@@ -75,6 +76,5 @@ const uint16_t PROGMEM combo3[] = {KC_T, KC_N, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo1, HYPR(KC_M)),
     COMBO(combo2, HYPR(KC_E)),
-    COMBO(combo3, HYPR(KC_N)),
 };
 
